@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Project</title>
+    <link rel="stylesheet" href="styles2.css">
+    <script src="data.js"></script>
+   
+    
+</head>
+
+<body>
+    <header>
+        <div id="header">
+            <h2>Companion Gardening - Finding good neigehbours</h2>
+            <h3>Please select 3 vegetables:</h3>
+        </div>
+    </header>
+    <br>
+    <div id="myForm">
+<div class="row">
+        <div id="veg1Div" class="selector">
+            <label class="items">Vegetable 1</label>
+            <select class="dropdownMenu" id="selectVegetable1" onclick="showImagesOnChoice(selectVegetable1.value, 'veg1Div', 'veg1Img')">
+                <option value="">Choose a vegetable</option>
+            </select>
+        </div>
+        <div id="veg1ImgDiv" class="vegies"><img id="veg1Img" src="templates/vegetablesRed.jpg"></div>
+        <br><br>
+
+        <div id="veg2Div" class="selector">
+            <label class="items">Vegetable 2</label>
+            <select class="dropdownMenu" id="selectVegetable2" onclick="showImagesOnChoice(selectVegetable2.value, 'veg2Div', 'veg2Img')">
+                <option value="">Choose a vegetable</option>
+            </select>
+        </div>
+        <div id="veg2ImgDiv" class="vegies"><img id="veg2Img" src="templates/vegetablesRed.jpg"></div>
+        <br><br>
+
+        <div id="veg3Div" class="selector">
+            <label class="items">Vegetable 3</label>
+            <select class="dropdownMenu" id="selectVegetable3" onclick="showImagesOnChoice(selectVegetable3.value, 'veg3Div', 'veg3Img')">
+                <option value="">Choose a vegetable</option>
+            </select>
+        </div>
+        <div id="veg3ImgDiv" class="vegies"><img id="veg3Img" src="templates/vegetablesRed.jpg"></div>
+        <br><br>
+        </div>
+        
+        <div id="check">
+            <button id="checkButton" onclick="comparisonResults()">Check</button>
+            <span id="checkTxt"> if there can get together</span>
+        </div>
+        <br><br>
+
+        <div id="output">
+        <div id="userInputResult"></div>
+        <br><br>
+        <div id="fittingTogetherResult"></div>
+        </div>
+    </div>
+    
+    <footer>
+        <ul>
+            <li><a href="https://www.mikroveda.info/en/2021/02/06/good-neighbors-bad-neighbors/">Microveda</a></li>
+            <li><a href="https://www.thegardener.co.za/grow-to-eat/pests-and-diseases/bad-veggie-neighbours/">The Gardener</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Companion_planting">Wikipedia: Companion Planting</a></li>
+            <li><a href="https://www.pexels.com">Photos provided by Pexels</a></li>
+        </ul>
+    </footer>
+    <script src="itsAVetch.js"></script>
+</body>
+
+</html>

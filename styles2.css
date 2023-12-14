@@ -1,0 +1,125 @@
+html {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    background-color: hsl(341, 78%, 87%);
+    font-family: Arial, Helvetica, sans-serif;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+html {
+    background-image: linear-gradient(to bottom right, hsl(342, 69%, 49%), hsl(342, 67%, 76%) );
+}
+body {
+    margin: 0;
+}
+
+
+header {
+    color:black;
+    text-align: center;
+}
+
+img {
+    border-radius: 10px;
+    border: 3px solid #406a03;
+    width: 100%;
+    max-width: 225px;
+    min-width: 200px;
+    height: 150px;
+    display: inline-block;
+    
+}
+
+.dropdownMenu  {
+    border: 2px solid  #406a03;
+    border-radius: 5px;
+    background-color: #406a03;
+    background-image: linear-gradient(to bottom right, #a4de4d, #406a03 );
+    color:whitesmoke
+}
+
+.vegies {
+   
+    margin-top: 13px;
+    margin-bottom: 10px;
+    width: 100%;
+    max-width: 225px;
+  
+    flex: 33.33%;
+    padding: 5px;
+    margin-right: 10px;
+}
+
+.row {
+    display: flex;
+       height: 100%;
+    }
+
+
+#check {
+    text-align: center;
+    color:#324b07;
+   
+
+
+}
+#checkButton {
+    border: #406a03, solid, 3px;
+    color: whitesmoke;
+    border-radius: 5px;
+    background-color: #6e9c20;
+}
+#checkTxt {
+    color: black;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+}
+li {
+    float: left;
+}
+a {
+    border-radius: 5px;
+    display: block;
+    padding : 8px;
+    background-color: #406a03;
+    background-image: linear-gradient(to bottom right, #9dc75e, #406a03 );
+    
+    color: white;
+    margin: 3px;
+}
+.items {
+    text-align: center;
+    margin-left: 27px;
+    color:black;
+}
+#myForm {
+    width: 100%;
+   
+    margin: 10px;
+    padding: 10px;
+}
+#output {
+    text-align: center;
+    margin-bottom: 40px;
+    color:#406a03;
+}
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+#userInputResult {
+    margin: 10px;
+    font-size: 20px;
+}
+#fittingTogetherResult {
+    margin: 10px;
+    font-size: 30px;
+}
