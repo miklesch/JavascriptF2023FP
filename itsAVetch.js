@@ -125,12 +125,12 @@ function comparisonResults() {
         return
     }
     else if ((veg1 !== "" && veg2 !== "") && (veg1 !== "" && veg3 !== "") && (veg2 !== "" && veg3 !== "")) {
-    userInputResult.textContent = "You choosed: " + veg1 + ", " + veg2 + " and " + veg3 + ".";
+        userInputResult.textContent = "You choosed: " + veg1 + ", " + veg2 + " and " + veg3 + ".";
     }
-    
+
     else if ((veg1 !== "" && veg2 !== "") && (veg1 !== "" && veg3 === "") && (veg2 !== "" && veg3 === "")) {
         userInputResult.textContent = "You have chosen: " + veg1 + " and " + veg2 + ".";
-    
+
     }
 
 
@@ -166,7 +166,7 @@ function comparisonResults() {
         (resultAC == false)) {
         let fittingTogetherResultDiv = document.getElementById("fittingTogetherResult");
         fittingTogetherResultDiv.textContent = "It works if " + veg2 + " is placed in the middle";
-
+    }
     // only one pair fits together
 
     else if ((resultAB == true) && (resultBC == false) &&
