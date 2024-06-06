@@ -39,7 +39,7 @@ createDropdown("selectVegetable1");
 createDropdown("selectVegetable2");
 createDropdown("selectVegetable3");
 
-// check if the three vegetables are good or badneighbours,
+// check if the three vegetables are good or bad neighbours,
 // getting return statements
 
 function isTribleCompatible(veg1, veg2, veg3) {
@@ -76,7 +76,7 @@ function isTribleCompatible(veg1, veg2, veg3) {
 function isPairCompatible(a, b) {
     x = goodneighbours[a];
     y = goodneighbours[b];
-    
+
     if (((a in goodneighbours) && (x.includes(b))) ||
         ((b in goodneighbours) && (y.includes(a)))) {
         return true;
@@ -90,7 +90,7 @@ function isPairCompatible(a, b) {
 function isPairNotCompatible(a, b) {
     x = badneighbours[a];
     y = badneighbours[b];
-    
+
     if (((a in badneighbours) && (x.includes(b))) ||
         ((b in badneighbours) && (y.includes(a)))) {
         return true;
@@ -111,12 +111,29 @@ function comparisonResults() {
     let veg3 = document.getElementById("veg3Div");
     veg3 = selectVegetable3.value;
 
-    let userInputResult = document.getElementById("userInputResult");
+    /* let userInputResult = document.getElementById("userInputResult");
     if ((veg1==="" && veg2==="") || (veg1==="" && veg3==="") || (veg2==="" && veg3==="")) {
         userInputResult.textContent = "Please select two or more vegetables for comparison."
         return
     }
+    userInputResult.textContent = "You choosed: " + veg1 + ", " + veg2 + " and " + veg3 + "."; */
+
+
+    let userInputResult = document.getElementById("userInputResult");
+    if ((veg1 === "" && veg2 === "") || (veg1 === "" && veg3 === "") || (veg2 === "" && veg3 === "")) {
+        userInputResult.textContent = "Please select two or more vegetables to compare."
+        return
+    }
+    else if ((veg1 !== "" && veg2 !== "") && (veg1 !== "" && veg3 !== "") && (veg2 !== "" && veg3 !== "")) {
     userInputResult.textContent = "You choosed: " + veg1 + ", " + veg2 + " and " + veg3 + ".";
+    }
+    
+    else if ((veg1 !== "" && veg2 !== "") && (veg1 !== "" && veg3 === "") && (veg2 !== "" && veg3 === "")) {
+        userInputResult.textContent = "You have chosen: " + veg1 + " and " + veg2 + ".";
+    
+    }
+
+
 
     let result = isTribleCompatible(veg1, veg2, veg3);
     // for goodneighbourship
@@ -133,40 +150,39 @@ function comparisonResults() {
     if ((resultAB == true) && (resultBC == true) &&
         (resultAC == true)) {
         let fittingTogetherResultDiv = document.getElementById("fittingTogetherResult");
-        fittingTogetherResultDiv.textContent = "Its a match! They fit together";
+        fittingTogetherResultDiv.textContent = "It`s a match! They fit together";
     }
     else if ((resultAB == true) && (resultBC == false) &&
         (resultAC == true)) {
         let fittingTogetherResultDiv = document.getElementById("fittingTogetherResult");
-        fittingTogetherResultDiv.textContent = "Its working, if " + veg1 + " arranged in the middle";
+        fittingTogetherResultDiv.textContent = "It works if " + veg1 + " is placed in the middle";
     }
     else if ((resultAB == false) && (resultBC == true) &&
         (resultAC == true)) {
         let fittingTogetherResultDiv = document.getElementById("fittingTogetherResult");
-        fittingTogetherResultDiv.textContent = "Its working, if " + veg3 + " arranged in the middle";
+        fittingTogetherResultDiv.textContent = "It works if " + veg3 + " is placed in the middle";
     }
     else if ((resultAB == true) && (resultBC == true) &&
         (resultAC == false)) {
         let fittingTogetherResultDiv = document.getElementById("fittingTogetherResult");
-        fittingTogetherResultDiv.textContent = "Its working, if " + veg2 + " arranged in the middle";
-    }
+        fittingTogetherResultDiv.textContent = "It works if " + veg2 + " is placed in the middle";
 
     // only one pair fits together
 
     else if ((resultAB == true) && (resultBC == false) &&
         (resultAC == false)) {
         let fittingTogetherResultDiv = document.getElementById("fittingTogetherResult");
-        fittingTogetherResultDiv.textContent = "You can put " + veg1 + " & " + veg2 + " together. But " + veg3 + " don't fit!";
+        fittingTogetherResultDiv.textContent = "You can put " + veg1 + " & " + veg2 + " together. But " + veg3 + " doesn`t work!";
     }
     else if ((resultAB == false) && (resultBC == true) &&
         (resultAC == false)) {
         let fittingTogetherResultDiv = document.getElementById("fittingTogetherResult");
-        fittingTogetherResultDiv.textContent = "You can put " + veg2 + " & " + veg3 + " together. But " + veg1 + " don't fit!";
+        fittingTogetherResultDiv.textContent = "You can put " + veg2 + " & " + veg3 + " together. But " + veg1 + " doesn`t work!";
     }
     else if ((resultAB == false) && (resultBC == false) &&
         (resultAC == true)) {
         let fittingTogetherResultDiv = document.getElementById("fittingTogetherResult");
-        fittingTogetherResultDiv.textContent = "You can put " + veg1 + " & " + veg3 + " together. But " + veg2 + " don't fit!";
+        fittingTogetherResultDiv.textContent = "You can put " + veg1 + " & " + veg3 + " together. But " + veg2 + " doesn`t work!";
     }
 
     // the vegetables are badneighbours or only two of the choosen fitting together
@@ -179,34 +195,34 @@ function comparisonResults() {
     else if ((resultAB2 == true) && (resultBC2 == false) &&
         (resultAC2 == true)) {
         let fittingTogetherResultDiv = document.getElementById("fittingTogetherResult");
-        fittingTogetherResultDiv.textContent = "Its working for " + veg2 + veg3 + " . " + 
-        veg1 + " doesn't like the others.";
+        fittingTogetherResultDiv.textContent = "It works for " + veg2 + veg3 + " . " +
+            veg1 + " doesn't like the others.";
     }
     else if ((resultAB2 == false) && (resultBC2 == true) &&
         (resultAC2 == true)) {
         let fittingTogetherResultDiv = document.getElementById("fittingTogetherResult");
-        fittingTogetherResultDiv.textContent = "Its working for " + veg1 + veg2 + " . " + 
-        veg3 + " doesn't like the others.";
+        fittingTogetherResultDiv.textContent = "It works for " + veg1 + veg2 + " . " +
+            veg3 + " doesn't like the others.";
     }
     else if ((resultAB2 == true) && (resultBC2 == true) &&
         (resultAC2 == false)) {
         let fittingTogetherResultDiv = document.getElementById("fittingTogetherResult");
-        fittingTogetherResultDiv.textContent = "Its working for " + veg1 + veg3 + " . " + 
-        veg2 + " doesn't like the others.";
+        fittingTogetherResultDiv.textContent = "It works for " + veg1 + veg3 + " . " +
+            veg2 + " doesn't like the others.";
     }
     else {
         let fittingTogetherResultDiv = document.getElementById("fittingTogetherResult");
-        fittingTogetherResultDiv.textContent = "They are neighter good or bad neighbours. You can put them togehter but there have no benefit of each other";
+        fittingTogetherResultDiv.textContent = "They are neither good nor bad neighbours. You can put them together, but they will not benefit from each other";
     }
 }
 // fetching data: getting images of vegetables by choosen items in the dropdown menu
 
 async function showImagesOnChoice(userInput, vegDiv, imgDiv) {
     let x = document.getElementById(vegDiv);
-    x = userInput.value; 
+    x = userInput.value;
 
-    if (userInput==="") {
-        userInput= "basket"
+    if (userInput === "") {
+        userInput = "basket"
     }
     let url = "https://pixabay.com/api/?key=41130349-cf93a96d889636f62511253e8&q=" + userInput + "&image_type=photo";
     let response = await fetch(url);
