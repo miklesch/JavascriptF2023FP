@@ -42,7 +42,7 @@ createDropdown("selectVegetable3");
 // check if the three vegetables are good or bad neighbours,
 // getting return statements
 
-function isTribleCompatible(veg1, veg2, veg3) {
+function isTripleCompatible(veg1, veg2, veg3) {
 
     let comparisonAB = isPairCompatible(veg1, veg2);
     let comparisonBC = isPairCompatible(veg2, veg3);
@@ -51,15 +51,7 @@ function isTribleCompatible(veg1, veg2, veg3) {
     let comparisonAB2 = isPairNotCompatible(veg1, veg2);
     let comparisonBC2 = isPairNotCompatible(veg2, veg3);
     let comparisonAC2 = isPairNotCompatible(veg1, veg3);
-    /**
-    console.log(comparisonAB);
-    console.log(comparisonBC);
-    console.log(comparisonAC);
 
-    console.log(comparisonAB2);
-    console.log(comparisonBC2);
-    console.log(comparisonAC2);
-    **/
     return {
         comparisonAB: comparisonAB,
         comparisonBC: comparisonBC,
@@ -74,8 +66,8 @@ function isTribleCompatible(veg1, veg2, veg3) {
 // if veg B is a value in veg A (key) goodneighbours 
 
 function isPairCompatible(a, b) {
-    x = goodneighbours[a];
-    y = goodneighbours[b];
+    let x = goodneighbours[a];
+    let y = goodneighbours[b];
 
     if (((a in goodneighbours) && (x.includes(b))) ||
         ((b in goodneighbours) && (y.includes(a)))) {
@@ -88,8 +80,8 @@ function isPairCompatible(a, b) {
 // checking if a pair of vetables are bad neighbours
 
 function isPairNotCompatible(a, b) {
-    x = badneighbours[a];
-    y = badneighbours[b];
+    let x = badneighbours[a];
+    let y = badneighbours[b];
 
     if (((a in badneighbours) && (x.includes(b))) ||
         ((b in badneighbours) && (y.includes(a)))) {
@@ -111,21 +103,13 @@ function comparisonResults() {
     let veg3 = document.getElementById("veg3Div");
     veg3 = selectVegetable3.value;
 
-    /* let userInputResult = document.getElementById("userInputResult");
-    if ((veg1==="" && veg2==="") || (veg1==="" && veg3==="") || (veg2==="" && veg3==="")) {
-        userInputResult.textContent = "Please select two or more vegetables for comparison."
-        return
-    }
-    userInputResult.textContent = "You choosed: " + veg1 + ", " + veg2 + " and " + veg3 + "."; */
-
-
     let userInputResult = document.getElementById("userInputResult");
     if ((veg1 === "" && veg2 === "") || (veg1 === "" && veg3 === "") || (veg2 === "" && veg3 === "")) {
         userInputResult.textContent = "Please select two or more vegetables to compare."
         return
     }
     else if ((veg1 !== "" && veg2 !== "") && (veg1 !== "" && veg3 !== "") && (veg2 !== "" && veg3 !== "")) {
-        userInputResult.textContent = "You choosed: " + veg1 + ", " + veg2 + " and " + veg3 + ".";
+        userInputResult.textContent = "You have chosen: " + veg1 + ", " + veg2 + " and " + veg3 + ".";
     }
 
     else if ((veg1 !== "" && veg2 !== "") && (veg1 !== "" && veg3 === "") && (veg2 !== "" && veg3 === "")) {
@@ -135,7 +119,7 @@ function comparisonResults() {
 
 
 
-    let result = isTribleCompatible(veg1, veg2, veg3);
+    let result = isTripleCompatible(veg1, veg2, veg3);
     // for goodneighbourship
     let resultAB = result.comparisonAB;
     let resultBC = result.comparisonBC;
@@ -147,67 +131,57 @@ function comparisonResults() {
 
     // three vegetables fitting together, sometimes with specific arrangement
 
-    if ((resultAB == true) && (resultBC == true) &&
-        (resultAC == true)) {
+    if (resultAB && resultBC && resultAC) {
         let fittingTogetherResultDiv = document.getElementById("fittingTogetherResult");
         fittingTogetherResultDiv.textContent = "It`s a match! They fit together";
     }
-    else if ((resultAB == true) && (resultBC == false) &&
-        (resultAC == true)) {
+    else if (resultAB && !resultBC && resultAC) {
         let fittingTogetherResultDiv = document.getElementById("fittingTogetherResult");
         fittingTogetherResultDiv.textContent = "It works if " + veg1 + " is placed in the middle";
     }
-    else if ((resultAB == false) && (resultBC == true) &&
-        (resultAC == true)) {
+    else if (!resultAB && resultBC && resultAC) {
         let fittingTogetherResultDiv = document.getElementById("fittingTogetherResult");
         fittingTogetherResultDiv.textContent = "It works if " + veg3 + " is placed in the middle";
     }
-    else if ((resultAB == true) && (resultBC == true) &&
-        (resultAC == false)) {
+    else if (resultAB && resultBC && !resultAC) {
         let fittingTogetherResultDiv = document.getElementById("fittingTogetherResult");
         fittingTogetherResultDiv.textContent = "It works if " + veg2 + " is placed in the middle";
     }
     // only one pair fits together
 
-    else if ((resultAB == true) && (resultBC == false) &&
-        (resultAC == false)) {
-        let fittingTogetherResultDiv = document.getElementById("fittingTogetherResult");
-        fittingTogetherResultDiv.textContent = "You can put " + veg1 + " & " + veg2 + " together. But " + veg3 + " doesn`t work!";
-    }
-    else if ((resultAB == false) && (resultBC == true) &&
-        (resultAC == false)) {
+    
+    else if (!resultAB && resultBC && !resultAC) {
         let fittingTogetherResultDiv = document.getElementById("fittingTogetherResult");
         fittingTogetherResultDiv.textContent = "You can put " + veg2 + " & " + veg3 + " together. But " + veg1 + " doesn`t work!";
     }
-    else if ((resultAB == false) && (resultBC == false) &&
-        (resultAC == true)) {
+    else if (!resultAB && !resultBC && resultAC) {
         let fittingTogetherResultDiv = document.getElementById("fittingTogetherResult");
         fittingTogetherResultDiv.textContent = "You can put " + veg1 + " & " + veg3 + " together. But " + veg2 + " doesn`t work!";
+    }
+    else if (resultAB && !resultBC && !resultAC) {
+        let fittingTogetherResultDiv = document.getElementById("fittingTogetherResult");
+        fittingTogetherResultDiv.textContent = "You can put " + veg1 + " & " + veg2 + " together. But " + veg3 + " doesn`t work!";
     }
 
     // the vegetables are badneighbours or only two of the choosen fitting together
 
-    else if ((resultAB2 == true) && (resultBC2 == true) &&
-        (resultAC2 == true)) {
+    else if (resultAB2 && resultBC2 && resultAC2) {
         let fittingTogetherResultDiv = document.getElementById("fittingTogetherResult");
-        fittingTogetherResultDiv.textContent = "Absolutly not! They don't like each other at all!";
+        fittingTogetherResultDiv.textContent = "Absolutely not! They don't like each other at all!";
     }
-    else if ((resultAB2 == true) && (resultBC2 == false) &&
-        (resultAC2 == true)) {
+    else if (resultAB2 && !resultBC2 && resultAC2) {
         let fittingTogetherResultDiv = document.getElementById("fittingTogetherResult");
-        fittingTogetherResultDiv.textContent = "It works for " + veg2 + veg3 + " . " +
+        fittingTogetherResultDiv.textContent = "It works for " + veg2 + " & " + veg3 + " . " +
             veg1 + " doesn't like the others.";
     }
-    else if ((resultAB2 == false) && (resultBC2 == true) &&
-        (resultAC2 == true)) {
+    else if (!resultAB2 && resultBC2 && resultAC2) {
         let fittingTogetherResultDiv = document.getElementById("fittingTogetherResult");
-        fittingTogetherResultDiv.textContent = "It works for " + veg1 + veg2 + " . " +
+        fittingTogetherResultDiv.textContent = "It works for " + veg1 + " & " + veg2 + " . " +
             veg3 + " doesn't like the others.";
     }
-    else if ((resultAB2 == true) && (resultBC2 == true) &&
-        (resultAC2 == false)) {
+    else if (resultAB2 && resultBC2 && !resultAC2) {
         let fittingTogetherResultDiv = document.getElementById("fittingTogetherResult");
-        fittingTogetherResultDiv.textContent = "It works for " + veg1 + veg3 + " . " +
+        fittingTogetherResultDiv.textContent = "It works for " + veg1 + " & " + veg3 + " . " +
             veg2 + " doesn't like the others.";
     }
     else {
@@ -224,6 +198,20 @@ async function showImagesOnChoice(userInput, vegDiv, imgDiv) {
     if (userInput === "") {
         userInput = "basket"
     }
+
+    // here I use the Pixabay API to get images of the vegetables: 
+    // If the user hasn`t choosen any vegetable, 
+    // I get an image of a basket with vegetables
+    //
+    // --->>The API-Key is intentionally exposed<<----- 
+    // As a learning project, I put it directly here in the code for 
+    // functionality. It should be hidden in backend for security reasons.  
+    //  
+    // Since fetching data from the API is a requirement for this project, 
+    // I decided to do it this way, but I am aware that 
+    // this is not a good solution
+    
+
     let url = "https://pixabay.com/api/?key=41130349-cf93a96d889636f62511253e8&q=" + userInput + "&image_type=photo";
     let response = await fetch(url);
     let data = await response.json();

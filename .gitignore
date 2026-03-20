@@ -1,1 +1,8 @@
 .vercel
+Thumbs.db         
+.vscode/
+tempCodeRunnerFile.*
+.pdf
+*.log
+*.env
+node_modules/
